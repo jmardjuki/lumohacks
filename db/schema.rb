@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160918114929) do
   enable_extension "plpgsql"
 
   create_table "maps", force: :cascade do |t|
-    t.string   "info"
+    t.integer  "info"
     t.float    "lat"
     t.float    "lng"
     t.datetime "created_at", null: false

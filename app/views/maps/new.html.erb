@@ -87,7 +87,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div id="form">
           <%= form_for(@map) do |f| %>
             <%= f.label :info %>
-            <%= f.text_field :info, class: 'form-control' %>
+            <%= f.select :info, Map.infos.map { |key, value| [key.humanize, key] } %>
             </br>
 
             <%= f.label :lat %>

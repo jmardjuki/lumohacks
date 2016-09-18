@@ -4,7 +4,7 @@
      <div id="sidebar_builder" style='width: 800px; height: 400px;'></div>
  </div>
  <div>
-   <a href="maps#new">Add me on the Map!</a>
+   <a href="maps/new" data-no-turbolink>Add me on the Map!</a>
  </div>
 <div>
 <script src='//maps.google.com/maps/api/js?v=3.23'></script>
@@ -18,6 +18,11 @@
         <% @maps.each do |map| %>
             { lat: <%= map.lat %>,
               lng: <%= map.lng %>,
+              picture: {
+                url: "maps/<%= map.read_attribute('info') %>.png",
+                width:  36,
+                height: 36
+              },
               infowindow: "<%= map.info %>",
             },
         <% end %>
