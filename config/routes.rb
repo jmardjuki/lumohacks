@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'maps/show'
+  get 'maps/new'
+
+  get 'maps/index'
 
   get 'maps/index'
 
