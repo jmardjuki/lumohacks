@@ -1,5 +1,7 @@
 class MapsController < ApplicationController
-
+  def index
+    @maps = Map.all
+  end
   def new
     @map = Map.new
   end
@@ -13,9 +15,6 @@ class MapsController < ApplicationController
     end
   end
 
-  def index
-    @maps = Map.all
-  end
   private
 
   def map_params

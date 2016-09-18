@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  get 'maps/new'
-
-  get 'maps/index'
-
-  get 'maps/index'
-
-  get 'maps/index'
+  get 'maps/new', to: 'maps#new'
+  get 'maps', to: 'maps#index'
 
   get 'sessions/new'
 
@@ -17,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :widgets
   resources :users
+  resources :maps  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,11 +9,7 @@ function geocodePosition(pos) {
 geocoder.geocode({
  latLng: pos
 }, function(responses) {
- if (responses && responses.length > 0) {
-   updateMarkerAddress(responses[0].formatted_address);
- } else {
-   updateMarkerAddress('Cannot determine address at this location.');
- }
+
 });
 }
 
@@ -22,14 +18,12 @@ document.getElementById('markerStatus').innerHTML = str;
 }
 
 function updateMarkerPosition(latLng) {
-document.getElementById('info').innerHTML = [
- latLng.lat(),
- latLng.lng()
-].join(', ');
+document.getElementById('map_lat').value = latLng.lat()
+document.getElementById('map_lng').value = latLng.lng()
 }
 
 function initialize() {
-var latLng = new google.maps.LatLng(-34.397, 150.644);
+var latLng = new google.maps.LatLng(49.2827, -123.1207);
 var map = new google.maps.Map(document.getElementById('mapCanvas'), {
  zoom: 8,
  center: latLng,
@@ -86,8 +80,33 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <div id="infoPanel">
    <b>Marker status:</b>
    <div id="markerStatus"><i>Click and drag the marker.</i></div>
-   <b>Current position:</b>
-   <div id="info"></div>
+   <table>
+  <tr>
+    <td>
+        <h2>Add new location in the Map!</h2>
+        <div id="form">
+          <%= form_for(@map) do |f| %>
+            <%= f.label :info %>
+            <%= f.text_field :info, class: 'form-control' %>
+            </br>
+
+            <%= f.label :lat %>
+            <%= f.number_field :lat , :class => 'text_field', :step => 0.0001 ,:readonly => true %>
+            </br></br>
+
+            <%= f.label :lng %>
+            <%= f.number_field :lng , :class => 'text_field', :step => 0.0001 ,:readonly => true %>
+            </br></br>
+
+            <%= f.submit "Create location", class: "btn btn-primary" %>
+
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </td>
+  </tr>
+</table>
 </div>
 </body>
 </html>
